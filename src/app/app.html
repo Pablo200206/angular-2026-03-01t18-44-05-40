@@ -1,9 +1,14 @@
-<!-- T-003: Crear AppComponent con botón contador -->
-<!-- TODO: Mostrar el valor actual del contador desde CounterStore -->
-<!-- TODO: Botón 'Incrementar' que ejecute store.increment() -->
-<!-- TODO: Estilizar con clases Tailwind CSS (layout centrado, botón con hover) -->
-<!-- TODO: Usar built-in control flow (@if, @for) si aplica -->
-<main>
-  <h1>Counter App</h1>
-  <p>Placeholder - Implementar contador aquí</p>
+<main class="flex min-h-screen flex-col items-center justify-center bg-gray-100">
+  <div class="rounded-2xl bg-white p-10 text-center shadow-lg">
+    <h1 class="mb-6 text-3xl font-bold text-gray-800">Counter App</h1>
+
+    <p class="mb-8 text-6xl font-semibold text-indigo-600">{{ store.count() }}</p>
+
+    <button
+      (click)="store.increment()"
+      class="rounded-lg bg-indigo-600 px-6 py-3 text-lg font-medium text-white transition-colors hover:bg-indigo-700 active:bg-indigo-800"
+    >
+      Incrementar
+    </button>
+  </div>
 </main>
