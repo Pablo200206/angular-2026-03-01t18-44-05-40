@@ -1,7 +1,16 @@
-// T-002: Implementar NgRx SignalStore para el contador
-// TODO: Importar signalStore, withState, withMethods de '@ngrx/signals'
-// TODO: Importar CounterState de './counter.types'
-// TODO: Crear el store con signalStore() usando withState() y withMethods()
-// TODO: Estado inicial: { count: 0 }
-// TODO: Método increment() que incremente count en 1
-// TODO: Exportar el store para inyección con inject()
+import { signalStore, withState, withMethods, patchState } from '@ngrx/signals';
+import { CounterState } from './counter.types';
+
+const initialState: CounterState = {
+  count: 0,
+};
+
+export const CounterStore = signalStore(
+  { providedIn: 'root' },
+  withState(initialState),
+  withMethods((store) => ({
+    increment(): void {
+      patchState(store, (state) => ({ count: state.count + 1 }));
+    },
+  }))
+);
